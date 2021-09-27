@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: model-factory-trigger-service
+  namespace: model-factory-services
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: "Forbid"
+  startingDeadlineSeconds: 900
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 180
+      template:
+        spec:
+          serviceAccountName: model-factory-service-sa
+          containers:
+          - name: model-factory-trigger-service
+            image: $DOCKER_REGISTRY/model-factory-trigger-service
+            imagePullPolicy: Always
+            volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+          volumes:
+          - name: dockersock
+            hostPath:
+              path: /var/run/docker.sock
+          restartPolicy: Never

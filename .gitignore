@@ -1,0 +1,5 @@
+*.pyc
+gen-py
+private
+.doit.db.db
+.doit.db
