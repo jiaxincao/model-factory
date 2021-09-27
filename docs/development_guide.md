@@ -29,6 +29,7 @@ FROM 172.31.27.140:5000/model_factory_base_image
 ################################################################################
 
 # If you need any packages or special setup for your pipeline, please put them in section 2.
+RUN pip3 install sklearn
 
 
 ################################################################################
@@ -51,9 +52,6 @@ import pickle
 from core.model_registry import ModelRegistry
 from core.execution_context import ExecutionContext
 
-# Standard scientific Python imports
-import matplotlib.pyplot as plt
-
 # Import datasets, classifiers and performance metrics
 from sklearn import datasets, svm, metrics
 from sklearn.model_selection import train_test_split
@@ -68,11 +66,6 @@ def main(params):
     # Please start implementing your pipeline logics from here.
 
     digits = datasets.load_digits()
-
-    _, axes = plt.subplots(nrows=1, ncols=4, figsize=(10, 3))
-    for ax, image, label in zip(axes, digits.images, digits.target):
-        ax.set_axis_off()
-        ax.set_title('Training: %i' % label)
 
     # flatten the images
     n_samples = len(digits.images)
