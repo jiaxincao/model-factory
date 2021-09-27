@@ -17,9 +17,9 @@ The above pain points really slows engineers down when they are developing their
 # Background
 There are existing work in the industry which tries to address the above issues as well, e.g., Facebook fblearner, Google Kubeflow.
 
-The key difference bewteen model factory and other projects is that model factory promotes a **pure python based authoring experience**, while most others uses DAG (Directed Acyclic Graph). The phylosophy gives model factory the following advantages:
+The key difference between model factory and other projects is that model factory promotes a **pure python based authoring experience**, while most others uses DAG (Directed Acyclic Graph). The philosophy gives model factory the following advantages:
 * **Easy to learn**: there is almost no learning curve. As long as you know how to write python, you know how to use model factory.
-* **More flexible**: control flow logics can be easily implemented on it.
+* **More flexible**: control flow logic can be easily implemented on it.
 * **Allow communication between nodes**: free form communication can be done between operators, which opens up the possibility of building distributed training on top of model factory.
 
 
